@@ -35,7 +35,10 @@ wind_silver = d_f_silver(:,2);
 combined = [time_year,time_day,time_month,time_hour,time_min,wind_ararat,wind_boco,wind_silver];
 
 %Print results
-
+%Print results
+print_matrix = combined([1:4],:);
+fprintf('%12s %12s %12s %12s %13s %16s %16s %16s\n','year','day','month','hour','minute','Ararat wind speed(m/s)','boco_rock wind speed(m/s)','silvertoon wind speed(m/s)')
+fprintf('%12d %12d %12d %12d %12d %12.4f %23.4f %23.4f\n',print_matrix')
 
 
 %Create output file
