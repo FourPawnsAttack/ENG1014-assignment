@@ -40,5 +40,25 @@ print_matrix = combined([1:4],:);
 fprintf('%12s %12s %12s %12s %13s %16s %16s %16s\n','year','day','month','hour','minute','Ararat wind speed(m/s)','boco_rock wind speed(m/s)','silvertoon wind speed(m/s)')
 fprintf('%12d %12d %12d %12d %12d %12.4f %23.4f %23.4f\n',print_matrix')
 
+%part b 
+% replace wind speeds that are less than 0 to 0
+for i = 1:size(wind_ararat)
+    if wind_ararat(i) < 0
+        wind_ararat(i) = 0;
+    end
+
+    if wind_boco(i) < 0
+        wind_boco(i) = 0;
+    end
+
+    if wind_silver(i) < 0
+        wind_silver(i) = 0;
+    end
+end
+
+for i = 1:size(wind_ararat)
+
+
+end
 
 %Create output file
