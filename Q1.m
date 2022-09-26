@@ -64,36 +64,33 @@ fileID = 'cleaned_data.txt';
 
 % clean ararat data
 for i = 1:length(wind_ararat)
-    if i+3 < length(wind_ararat)
-        if i >= 4 
-            v_avg = mean(wind_ararat(i-3:i+3)); % find the hourly average by averaging from the top 3 and bottom 3 points
-            if wind_ararat(i)/v_avg > 1.7 || wind_ararat(i)/v_avg < 0.3
-                wind_ararat(i) = v_avg;
-            end
+    if i+3 < length(wind_ararat) && i >= 4
+        v_avg = mean(wind_ararat(i-3:i+3)); % find the hourly average by averaging from the top 3 and bottom 3 points
+        if wind_ararat(i)/v_avg > 1.7 || wind_ararat(i)/v_avg < 0.3
+            wind_ararat(i) = v_avg;
+            disp(i)
         end
     end
 end
 
 % clean boco data
 for i = 1:length(wind_boco)
-    if i+3 < length(wind_boco)
-        if i >= 4 
-            v_avg = mean(wind_boco(i-3:i+3)); % find the hourly average by averaging from the top 3 and bottom 3 points
-            if wind_boco(i)/v_avg > 1.7 || wind_ararat(i)/v_avg < 0.3
-                wind_boco(i) = v_avg;
-            end
+    if i+3 < length(wind_boco) && i >= 4
+        v_avg = mean(wind_boco(i-3:i+3)); % find the hourly average by averaging from the top 3 and bottom 3 points
+        if wind_boco(i)/v_avg > 1.7 || wind_ararat(i)/v_avg < 0.3
+            wind_boco(i) = v_avg;
+            disp(i)
         end
     end
 end
 
 % clean silverton data
 for i = 1:length(wind_silver)
-    if i+3 < length(wind_silver)
-        if i >= 4 
-            v_avg = mean(wind_silver(i-3:i+3)); % find the hourly average by averaging from the top 3 and bottom 3 points
-            if wind_silver(i)/v_avg > 1.7 || wind_silver(i)/v_avg < 0.3
-                wind_silver(i) = v_avg;
-            end
+    if i+3 < length(wind_silver) && i >= 4
+        v_avg = mean(wind_silver(i-3:i+3)); % find the hourly average by averaging from the top 3 and bottom 3 points
+        if wind_silver(i)/v_avg > 1.7 || wind_silver(i)/v_avg < 0.3
+            wind_silver(i) = v_avg;
+            disp(i)
         end
     end
 end
