@@ -62,7 +62,7 @@ wind_boco = wind_boco.';
 wind_silver = wind_silver.';
 fileID = 'cleaned_data.txt';
 
-% clean ararat file
+% clean ararat data
 for i = 1:length(wind_ararat)
     if i+3 < length(wind_ararat)
         if i >= 4 
@@ -74,7 +74,7 @@ for i = 1:length(wind_ararat)
     end
 end
 
-% clean boco file
+% clean boco data
 for i = 1:length(wind_boco)
     if i+3 < length(wind_boco)
         if i >= 4 
@@ -86,7 +86,7 @@ for i = 1:length(wind_boco)
     end
 end
 
-% clean silver file
+% clean silverton data
 for i = 1:length(wind_silver)
     if i+3 < length(wind_silver)
         if i >= 4 
