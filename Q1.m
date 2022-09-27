@@ -75,7 +75,8 @@ wind_silver_old = wind_silver;
 % clean ararat data
 for i = 1:length(wind_ararat)
     if i+3 < length(wind_ararat) && i >= 4
-        v_avg = mean(wind_ararat(i-3:i+3)); % find the hourly average by averaging from the top 3 and bottom 3 points
+        v_avg = mean(wind_ararat([i-3:i-1, i+1:i+3]));
+ % find the hourly average by averaging from the top 3 and bottom 3 points
         if wind_ararat(i)/v_avg > 1.7 || wind_ararat(i)/v_avg < 0.3
             wind_ararat(i) = v_avg;
             index_ararat(counter) = i;
@@ -87,7 +88,7 @@ counter = 1; %reset counter
 % clean boco data
 for i = 1:length(wind_boco)
     if i+3 < length(wind_boco) && i >= 4
-        v_avg = mean(wind_boco(i-3:i+3)); % find the hourly average by averaging from the top 3 and bottom 3 points
+        v_avg = mean(wind_boco([i-3:i-1, i+1:i+3])); % find the hourly average by averaging from the top 3 and bottom 3 points
         if wind_boco(i)/v_avg > 1.7 || wind_ararat(i)/v_avg < 0.3
             wind_boco(i) = v_avg;
             index_boco(counter) = i;
@@ -100,7 +101,7 @@ counter = 1; %reset counter
 % clean silverton data
 for i = 1:length(wind_silver)
     if i+3 < length(wind_silver) && i >= 4
-        v_avg = mean(wind_silver(i-3:i+3)); % find the hourly average by averaging from the top 3 and bottom 3 points
+        v_avg = mean(wind_silver([i-3:i-1, i+1:i+3])); % find the hourly average by averaging from the top 3 and bottom 3 points
         if wind_silver(i)/v_avg > 1.7 || wind_silver(i)/v_avg < 0.3
             wind_silver(i) = v_avg;
             index_silver(counter) = i;
@@ -109,6 +110,11 @@ for i = 1:length(wind_silver)
     end
 end
 counter = 1; %reset counter
+
+% transpose the matrices to make it easier to work with 
+wind_ararat = wind_ararat.';
+wind_boco = wind_boco.';
+wind_silver = wind_silver.';
 
 % create output file 
 fid = fopen('cleaned_data.txt','w');

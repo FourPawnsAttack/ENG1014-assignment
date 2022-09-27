@@ -13,8 +13,22 @@ fprintf('\n Q2 \n\n')
 %Add your code here
 date_matrix = datenum(time_year,time_month,time_day);
 wind_all = [wind_ararat,wind_boco,wind_silver];
-% find the distribution of time when each each site has the largest wind speed
+counter_ararat = 0;
+counter_boco = 0;
+counter_silver = 0;
 
+% find the distribution of time when each each site has the largest wind speed
+for i = 1:size(wind_ararat)
+    [M,I] = max(wind_all(i,:));
+    disp(I)
+    if I == 1
+        counter_ararat = counter_ararat + 1;
+    elseif I == 2
+        counter_boco = counter_boco + 1;
+    elseif I == 3
+        counter_silver = counter_silver + 1;
+    end
+end
 
 %Print results
 
