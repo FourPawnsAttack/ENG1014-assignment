@@ -60,7 +60,17 @@ end
 wind_ararat = wind_ararat.';
 wind_boco = wind_boco.';
 wind_silver = wind_silver.';
-fileID = 'cleaned_data.txt';
+
+%store index where changes happens
+index_ararat = [];
+index_boco = [];
+index_silver = [];
+counter = 1;
+
+% duplicate data before cleaned to compare 
+wind_ararat_old = wind_ararat;
+wind_boco_old = wind_boco;
+wind_silver_old = wind_silver;
 
 % clean ararat data
 for i = 1:length(wind_ararat)
@@ -68,21 +78,24 @@ for i = 1:length(wind_ararat)
         v_avg = mean(wind_ararat(i-3:i+3)); % find the hourly average by averaging from the top 3 and bottom 3 points
         if wind_ararat(i)/v_avg > 1.7 || wind_ararat(i)/v_avg < 0.3
             wind_ararat(i) = v_avg;
-            disp(i)
+            index_ararat(counter) = i;
+            counter = counter + 1;
         end
     end
 end
-
+counter = 1; %reset counter
 % clean boco data
 for i = 1:length(wind_boco)
     if i+3 < length(wind_boco) && i >= 4
         v_avg = mean(wind_boco(i-3:i+3)); % find the hourly average by averaging from the top 3 and bottom 3 points
         if wind_boco(i)/v_avg > 1.7 || wind_ararat(i)/v_avg < 0.3
             wind_boco(i) = v_avg;
-            disp(i)
+            index_boco(counter) = i;
+            counter = counter + 1;
         end
     end
 end
+counter = 1; %reset counter
 
 % clean silverton data
 for i = 1:length(wind_silver)
@@ -90,9 +103,18 @@ for i = 1:length(wind_silver)
         v_avg = mean(wind_silver(i-3:i+3)); % find the hourly average by averaging from the top 3 and bottom 3 points
         if wind_silver(i)/v_avg > 1.7 || wind_silver(i)/v_avg < 0.3
             wind_silver(i) = v_avg;
-            disp(i)
+            index_silver(counter) = i;
+            counter = counter + 1;
         end
     end
 end
+counter = 1; %reset counter
 
-%Create output file
+% create output file 
+fid = fopen('cleaned_data.txt','w');
+formatspec = 'Change logged at Location: Ararat Time: %d Old: %4.2f New: %4.2f\n';
+fprintf(fid,formatspec,time(index_ararat),wind_ararat_old(index_ararat),wind_ararat(index_ararat));
+
+fclose(fid);
+
+
