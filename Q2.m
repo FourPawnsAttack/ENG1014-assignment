@@ -72,15 +72,12 @@ legend('Ararat','Boco Rock','Silverton','Tie')
 %Plotting for (c)
 
 figure(3)
-
 % Dawn 00:00 - 6:00 Morning 7:00 - 12:00 Afternoon 13:00 - 18:00 Night 19:00 - 23:00
-
 % variables needed to find the index of the times 
 index_dawn= [];
 index_morning = [];
 index_after = [];
 index_night = [];
-
 % index counters  
 a = 1;
 b = 1;
@@ -89,7 +86,7 @@ d = 1;
 time = [1,2,3,4];
 
 for i = 1:length(time_hour)
-    
+    % determine what time period it is by the hour
     if time_hour(i) == 0 || time_hour(i) == 1 || time_hour(i) == 2 || time_hour(i) == 3  || time_hour(i) == 4 || time_hour(i) == 5 || time_hour(i) == 6  
         index_dawn(a) = i;
         a = a + 1;

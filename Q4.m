@@ -4,9 +4,9 @@
 % DO NOT clear, close or clc inside this script
 % Apply good programming practices
 %
-% Name :
-% ID   :
-% Date Modified : 
+% Name : Wee Jun Lin
+% ID   : 32620861
+% Date Modified : 27/9/2022
 
 fprintf('\n Q4 \n\n')
 %%
@@ -16,4 +16,4 @@ fprintf('\n Q4 \n\n')
 %Print results
 
 %You should have produced one figure window by the end of this task.
-figure(4)
+figure(5)
