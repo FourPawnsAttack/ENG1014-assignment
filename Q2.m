@@ -102,9 +102,9 @@ for i = 1:length(time_hour)
     end
 end
 
-average_ararat_speeds = [mean(wind_ararat(index_dawn)),mean(wind_ararat(index_morning)),mean(wind_ararat(index_after)),mean(wind_ararat(index_night))]
-average_boco_speeds = [mean(wind_boco(index_dawn)),mean(wind_boco(index_morning)),mean(wind_boco(index_after)),mean(wind_boco(index_night))]
-average_silver_speeds = [mean(wind_silver(index_dawn)),mean(wind_silver(index_morning)),mean(wind_silver(index_after)),mean(wind_silver(index_night))]
+average_ararat_speeds = [mean(wind_ararat(index_dawn)),mean(wind_ararat(index_morning)),mean(wind_ararat(index_after)),mean(wind_ararat(index_night))];
+average_boco_speeds = [mean(wind_boco(index_dawn)),mean(wind_boco(index_morning)),mean(wind_boco(index_after)),mean(wind_boco(index_night))];
+average_silver_speeds = [mean(wind_silver(index_dawn)),mean(wind_silver(index_morning)),mean(wind_silver(index_after)),mean(wind_silver(index_night))];
 
 plot(time,average_ararat_speeds,'b^--',time,average_boco_speeds,'c^--',time,average_silver_speeds,'g^--');
 title("Average wind speed data for different sites & period intervals across the year",FontSize=10)
