@@ -116,10 +116,23 @@ wind_ararat = wind_ararat.';
 wind_boco = wind_boco.';
 wind_silver = wind_silver.';
 
+print_ararat = [time(index_ararat),wind_silver(index_ararat),wind_ararat(index_ararat)];
+print_boco = [time(index_boco),wind_silver(index_boco),wind_ararat(index_boco)];
+print_silver = [time(index_silver),wind_silver(index_silver),wind_ararat(index_silver)];
+
 % create output file 
 fid = fopen('cleaned_data.txt','w');
-formatspec = 'Change logged at Location: Ararat Time: %d Old: %4.2f New: %4.2f\n';
-fprintf(fid,formatspec,time(index_ararat),wind_ararat_old(index_ararat),wind_ararat(index_ararat));
+% print changes in Ararat's wind speed
+fprintf(fid,'%12s %16s %16s %17s\n','Date','Old Speed','New Speed',"Location: Ararat");
+fprintf(fid,'%12d %16.4f %16.4f\n',print_ararat');
+
+% print changes in Boco Rock's wind speed
+fprintf(fid,'%12s %16s %16s %17s\n','Date','Old Speed','New Speed',"Location: Boco Rock");
+fprintf(fid,'%12d %16.4f %16.4f\n',print_boco');
+
+% print changes in Silverton's wind speed
+fprintf(fid,'%12s %16s %16s %17s\n','Date','Old Speed','New Speed',"Location: Silverton");
+fprintf(fid,'%12d %16.4f %16.4f\n',print_silver');
 
 fclose(fid);
 
