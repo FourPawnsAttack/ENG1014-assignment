@@ -89,7 +89,7 @@ counter = 1; %reset counter
 for i = 1:length(wind_boco)
     if i+3 < length(wind_boco) && i >= 4
         v_avg = mean(wind_boco([i-3:i-1, i+1:i+3])); % find the hourly average by averaging from the top 3 and bottom 3 points
-        if wind_boco(i)/v_avg > 1.7 || wind_ararat(i)/v_avg < 0.3
+        if wind_boco(i)/v_avg > 1.7 || wind_boco(i)/v_avg < 0.3
             wind_boco(i) = v_avg;
             index_boco(counter) = i;
             counter = counter + 1;
@@ -116,9 +116,14 @@ wind_ararat = wind_ararat.';
 wind_boco = wind_boco.';
 wind_silver = wind_silver.';
 
-print_ararat = [time(index_ararat),wind_silver(index_ararat),wind_ararat(index_ararat)];
-print_boco = [time(index_boco),wind_silver(index_boco),wind_ararat(index_boco)];
-print_silver = [time(index_silver),wind_silver(index_silver),wind_ararat(index_silver)];
+wind_ararat_old = wind_ararat_old .';
+wind_boco_old  = wind_boco_old .';
+wind_silver_old  = wind_silver_old .';
+
+
+print_ararat = [time(index_ararat),wind_ararat_old(index_ararat),wind_ararat(index_ararat)];
+print_boco = [time(index_boco),wind_boco_old(index_boco),wind_boco(index_boco)];
+print_silver = [time(index_silver),wind_silver_old(index_silver),wind_silver(index_silver)];
 
 % create output file 
 fid = fopen('cleaned_data.txt','w');
