@@ -19,17 +19,15 @@ avg_silver = data_file(:,3);
 avg_boco = data_file(:,4);
 
 figure(4)
-subplot(3,1,1)
 plot(height,avg_ararat,'bo','MarkerSize',5)
 xlabel("Height(m)");ylabel("Average wind speed (m/s)");
 
 hold on 
-subplot(3,1,2)
+
 plot(height,avg_silver,'r*','MarkerSize',9)
 xlabel("Height(m)");ylabel("Average wind speed (m/s)");
 
-hold on
-subplot(3,1,3)
+
 plot(height,avg_boco,'m--^','MarkerSize',8)
 xlabel("Height(m)");ylabel("Average wind speed (m/s)");
 hold on
@@ -67,16 +65,13 @@ y_boco = y_boc(height);
 y_silver = y_silv(height);
 
 % plot the fitted lines
-subplot(3,1,1)
 
 plot(height,y_ararat,'b');
 hold on;
-subplot(3,1,2)
 plot(height,y_silver,'r--');
 hold on;
 
-subplot(3,1,3)
-plot(height,y_boco,'m');
+plot(height,y_boco,'m-');
 hold on;
 
 % find r2 values for each equation
@@ -158,12 +153,7 @@ h0_fixed = 80; % corrected height
 % anon function for plotting
 y_new = @(w0,h,alpha) w0.*(h/h0_fixed).^alpha;
 
-subplot(3,1,1)
-plot(height,y_new(w0_ararat,height,a_ararat),'LineWidth',3)
-subplot(3,1,2)
-plot(height,y_new(w0_silverton,height,a_silver),'LineWidth',3)
-subplot(3,1,3)
-plot(height,y_new(w0_boco,height,a_boco),'LineWidth',3)
+
 
 
 
