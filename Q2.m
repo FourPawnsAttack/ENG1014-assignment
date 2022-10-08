@@ -153,8 +153,7 @@ avg_sil = [avg_sil_0,avg_sil_1,avg_sil_2,avg_sil_3,avg_sil_4,avg_sil_5,avg_sil_6
 data = 0:1:23;
 hold on
 plot(data,avg_arr,data,avg_boc,data,avg_sil)
-datetick('x','HH:MM')
 title('Average Wind Speeds at Different Times of the Day across the Year')
-xlabel('Time')
-ylabel('Average Wind Speed')
-legend('Ararat','Boco Rock','Silverton','Location','northwest')
+xlabel('Time');
+ylabel('Average Wind Speed'); xlim([0 23]);
+legend('Ararat','Boco Rock','Silverton','Location','northwest');
