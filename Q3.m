@@ -59,19 +59,20 @@ y_ara = @(h) w0_ararat.*(h/h0).^a_ararat;
 y_boc = @(h) w0_boco.*(h/h0).^a_boco ;
 y_silv = @(h) w0_silverton.*(h/h0).^a_silver;
 
+
+fit_x = 0:0.001:140; % extrapolate 
 % functions for the sites
-y_ararat = y_ara(height);
-y_boco = y_boc(height);
-y_silver = y_silv(height);
+y_ararat = y_ara(fit_x);
+y_boco = y_boc(fit_x);
+y_silver = y_silv(fit_x);
 
 % plot the fitted lines
 
-plot(height,y_ararat,'b');
+plot(fit_x,y_ararat,'b');
 hold on;
-plot(height,y_silver,'r--');
+plot(fit_x,y_silver,'r--');
 hold on;
-
-plot(height,y_boco,'m-');
+plot(fit_x,y_boco,'m-');
 hold on;
 
 % find r2 values for each equation
@@ -151,9 +152,29 @@ fprintf("The terrain of Silver is %s\n",ter_silver)
 h0_fixed = 80; % corrected height
 
 % anon function for plotting
-y_new = @(w0,h,alpha) w0.*(h/h0_fixed).^alpha;
+y_new = @(w0,alpha) w0.*(h0_fixed/h0).^alpha;
 
+ynew_ararat = y_new(wind_ararat,a_ararat);
+ynew_boco = y_new(wind_boco,a_boco);
+ynew_silver = y_new(wind_silver,a_silver);
 
+figure(1)
+subplot(3,1,1)
+hold on
+plot(date_matrix,ynew_ararat,'m','LineWidth',2)
+datetick('x')
+legend('Original','Corrected')
+
+subplot(3,1,2)
+hold on
+plot(date_matrix,ynew_boco,'m','LineWidth',2)
+datetick('x')
+legend('Original','Corrected')
+
+subplot(3,1,3)
+hold on
+plot(date_matrix,ynew_silver,'m','LineWidth',2)
+legend('Original','Corrected')
 
 
 

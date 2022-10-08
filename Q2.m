@@ -12,12 +12,14 @@ fprintf('\n Q2 \n\n')
 %%
 %Add your code here
 % variables 
-date_matrix = datenum(time_year,time_month,time_day); % convert date to single serial number
 wind_all = [wind_ararat,wind_boco,wind_silver];
 counter_ararat = 0;
 counter_boco = 0;
 counter_silver = 0;
 counter_tie = 0;
+
+second = zeros(length(time_year),1); % create seconds 
+date_matrix = datenum(time_year,time_month,time_day,time_hour,time_min,second); % convert date to single serial number
 
 
 % find the distribution of time when each each site has the largest wind speed
