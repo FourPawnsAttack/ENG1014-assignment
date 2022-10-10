@@ -12,7 +12,7 @@ fprintf('\n Q6 \n\n')
 %%
 %Add your code here
 % call PowerFunc and outputs vector P containing power
-P = PowerFunc(windspeed,Wc,Wf,cp);
+P = PowerFunc(windspeed,Wc,Wcut,fy1,fy2);
 
 %Print results
 
