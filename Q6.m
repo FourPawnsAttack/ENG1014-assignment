@@ -11,7 +11,8 @@
 fprintf('\n Q6 \n\n')
 %%
 %Add your code here
-
+% call PowerFunc and outputs vector P containing power
+P = PowerFunc(windspeed,Wc,Wf,cp);
 
 %Print results
 

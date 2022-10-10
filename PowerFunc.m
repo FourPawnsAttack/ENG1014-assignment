@@ -1,6 +1,6 @@
 function P = PowerFunc(W,Wc,Wf,cp)
 %POWERFUNC Summary of this function goes here
-%   Detailed explanation goes here
+% Detailed explanation goes here
 % W is the windspeed
 % Wc is the cut-in windspeed
 % Wf is the cut-off windspeed
