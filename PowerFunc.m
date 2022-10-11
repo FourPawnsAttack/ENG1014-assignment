@@ -12,7 +12,7 @@ function P = PowerFunc(W,Wc,Wcut,fy1,fy2)
 p = 1.225; % density of air
 A = pi * ((70.5/2)-0.5)^2;
 P = [];
-
+ % divide by 100 as whole number
 
 
 if W < Wc
@@ -22,6 +22,7 @@ elseif W > Wcut
 
 else
     cp = fy1(W);
+    cp =  cp/100;
     power = 0.5 .* cp .* p .* A .* W.^3;
     P = power;
     if W > 20 

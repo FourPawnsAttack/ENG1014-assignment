@@ -51,7 +51,8 @@ fy2 = @(x) p2(1)*x.^3 + p2(2)*x.^2 + p2(3)*x + p2(4);
 % find cut out speed
 Wcut = fzero(fy2,26);
  
-xy2 = windspeed(15): 1e-6 :Wcut;
+xy2 = windspeed(16): 1e-6 :Wcut;
+
 y2 = polyval(p2,xy2);
 
 % find furling speed
@@ -59,8 +60,9 @@ y2 = polyval(p2,xy2);
 fy3 = @(x) polyval(p1,x) - max(polyval(p2,xy2));
 Wf = fzero(fy3,21);
 
+xy2_2 = Wf:1e-6:Wcut; % create vector starting from furling speed to end
 hold on
-plot(xy2,y2,'r-') % plot the second curve
+plot(xy2_2,fy2(xy2_2),'r-') % plot the second curve
 
 hold on
 plot(Wc,fy1(Wc),'b*','markersize',15) % plot root
