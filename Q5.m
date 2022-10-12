@@ -29,12 +29,12 @@ F = (mass * velo^2)/radius;
 fprintf("The force exerted is %.5f N\n",F)
 
 % q5b)
-i_h = 0.5*mass_h*radius_h^2; % central housing moment
-i_b = (1/12)*mass*(radius/radius_h)^2; % blade moment 
+i_centre = 0.5*mass_h*radius_h^2;
+%I_blade = (1/12)*m_blade*(r_blade - r_centre)^2+m_blade*((r_blade-r_centre)/2+r_centre)^2;
+i_blade = 1/3*mass*(radius-radius_h)^2;
+i_total = i_centre + 3*i_blade;
 
-i_total = i_h + 3*i_b; % total moment
-
-fprintf("The moment of inertia is %.5f kgm^2\n",m_total)
+fprintf("The moment of inertia is %.5f kgm^2\n",i_total)
 
 % q5c)
 mass_total = 3*mass + mass_h;
@@ -48,13 +48,15 @@ r_decel = torque/i_total;
 fprintf("The rotational deceleration is %.10f rad/s^2\n",r_decel)
 
 % q5e)
-new_velo = ini_vel/radius;
-time = (v-new_velo)./r_decel;
+a_velo = ini_vel/radius;
+% v= u+at, v-u/a
+time = -a_velo/-r_decel;
+
 
 fprintf("The time taken to decelerate to rest is %.10f s\n",time)
 
 % q5f)
-heat = 0.5*i_total*(new_velo)^2;
+heat = 0.5*i_total*(a_velo)^2;
 
 fprintf("The total energy dissipated as heat is %.10f J\n",heat)
 
