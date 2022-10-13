@@ -30,8 +30,7 @@ fprintf("The force exerted is %.5f N\n",F)
 
 % q5b)
 i_centre = 0.5*mass_h*radius_h^2;
-%I_blade = (1/12)*m_blade*(r_blade - r_centre)^2+m_blade*((r_blade-r_centre)/2+r_centre)^2;
-i_blade = 1/3*mass*(radius-radius_h)^2;
+i_blade = (1/12)*mass*(radius - radius_h)^2 + mass * ((radius-radius_h)/2+radius_h)^2;
 i_total = i_centre + 3*i_blade;
 
 fprintf("The moment of inertia is %.5f kgm^2\n",i_total)
@@ -61,4 +60,3 @@ heat = 0.5*i_total*(a_velo)^2;
 fprintf("The total energy dissipated as heat is %.10f J\n",heat)
 
 %Print results
-
